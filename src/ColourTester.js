@@ -6,7 +6,7 @@ function ColourTester() {
   const [swatchColours, setSwatchColours] = useState([]);
   const [correctColour, setCorrectColour] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
-  // const [isReloaded, setIsReoaded] = useState(false);
+  const [isReloaded, setIsReoaded] = useState(false);
 
   const randomHexColour = () => {
     let randomColour = '#';
@@ -28,7 +28,7 @@ function ColourTester() {
     setSwatchColours(colours);
     setCorrectColour(colours[Math.floor(Math.random() * 3)]);
   }
-  , []);
+  , [isReloaded]);
 
   return (
     <div className="ColourTester">
@@ -50,11 +50,16 @@ function ColourTester() {
             ? 'Correct!'
             : 'Incorrect!'
       }</p>
-      <button 
-        className="replayButton"
-      >
-        Play Again!
-      </button>
+      { isCorrect !== null &&
+          <button 
+            className="replayButton"
+            onClick={() => {
+              setIsReoaded(!isReloaded);
+            }}
+          >
+          Randomize Colours
+        </button>
+      }
     </div>
   );
 }
