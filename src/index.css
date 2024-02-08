@@ -12,3 +12,8 @@ code {
     monospace;
 }
 
+.swatches {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

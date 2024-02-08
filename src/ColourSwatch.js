@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ColourSwatch.css';
 
 function ColourSwatch(props) {
-  const { colour } = props;
+  const { colour, correctColour, setIsCorrect } = props;
 
   return (
     <div 
       className="ColourSwatch"
-      key="index"
-      style={{backgroundColor: colour}}>
-        <p>{colour}</p>
+      style={{backgroundColor: colour}}
+      onClick={() => {
+          console.log(`clicked on ${colour}`)
+          if (colour === correctColour) {
+            setIsCorrect(true);
+          } else {
+            setIsCorrect(false);
+          }
+        }}>
     </div>
   );
 }

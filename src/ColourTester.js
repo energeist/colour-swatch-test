@@ -5,7 +5,7 @@ import './ColourSwatch.css';
 function ColourTester() {
   const [swatchColours, setSwatchColours] = useState([]);
   const [correctColour, setCorrectColour] = useState('');
-  // const [isCorrect, setIsCorrect] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
   // const [isReloaded, setIsReoaded] = useState(false);
 
   const randomHexColour = () => {
@@ -24,6 +24,7 @@ function ColourTester() {
     for (let i = 0; i < 3; i++) {
       colours.push(randomHexColour());
     }
+    setIsCorrect(null);
     setSwatchColours(colours);
     setCorrectColour(colours[Math.floor(Math.random() * 3)]);
   }
@@ -31,17 +32,24 @@ function ColourTester() {
 
   return (
     <div className="ColourTester">
-      <p>Which colour is {correctColour}?</p>
       <div className="swatches">
         { swatchColours.map((colour, index) => {
-          let swatchProps = {colour, index}
+          let swatchProps = { colour, correctColour, setIsCorrect };
           
           return (
-            <ColourSwatch {...swatchProps} />
+            <ColourSwatch key={index} {...swatchProps} />
           )
         })}
       </div>
-      <p className="clickMessage">correct/incorrect</p>
+      <p>Which colour is {correctColour}?</p>
+      <p className="clickMessage">{ 
+        isCorrect === null
+          // Sorry for the cursed nested ternary, it's just shorter.
+          ? 'Click a swatch to guess'
+          : isCorrect
+            ? 'Correct!'
+            : 'Incorrect!'
+      }</p>
       <button 
         className="replayButton"
       >
