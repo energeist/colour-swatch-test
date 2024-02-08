@@ -3,20 +3,8 @@
   flex-direction: row;
 }
 
-.ColourSwatch, .tempswatch1, .tempswatch2, .tempswatch3 {
+.ColourSwatch {
   width: 100px;
   height: 100px;
   border: 1px solid black;
-}
-
-.tempswatch1 {
-  background-color: red;
-}
-
-.tempswatch2 {
-  background-color: blue;
-}
-
-.tempswatch3 {
-  background-color: green;
 }

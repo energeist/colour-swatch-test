@@ -5,8 +5,8 @@ import './ColourSwatch.css';
 function ColourTester() {
   const [swatchColours, setSwatchColours] = useState([]);
   const [correctColour, setCorrectColour] = useState('');
-  const [isCorrect, setIsCorrect] = useState(null);
-  const [isReloaded, setIsReoaded] = useState(false);
+  // const [isCorrect, setIsCorrect] = useState(null);
+  // const [isReloaded, setIsReoaded] = useState(false);
 
   const randomHexColour = () => {
     let randomColour = '#';
@@ -19,8 +19,6 @@ function ColourTester() {
     return randomColour;
   }
 
-  console.log(randomHexColour());
-
   useEffect(() => {
     let colours = [];
     for (let i = 0; i < 3; i++) {
@@ -30,8 +28,6 @@ function ColourTester() {
     setCorrectColour(colours[Math.floor(Math.random() * 3)]);
   }
   , []);
-
-  console.log(swatchColours);
 
   return (
     <div className="ColourTester">
